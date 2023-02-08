@@ -1,3 +1,5 @@
+############## Used to plot height versus width of individual micropulses stored in a directory  ######################
+
 import os
 import numpy as np
 import matplotlib.pyplot as plt
@@ -6,7 +8,9 @@ dir=str(input("enter directory name: "))
 
 widths1=[]
 intensity=[]
-		
+
+############## Getting information of individual micropulses   ##########################
+
 for fil in os.listdir(dir):
 	I=[]
 	for line in open(dir+"/"+fil,"r"):
@@ -39,10 +43,14 @@ widths1=np.array(widths1)*5.12
 res = stats.pearsonr(widths1,intensity)
 print(res)
 
+###################  Printing Basic statistics of the micropulses  ###################################
+
 print('Mean of widths')
 print(np.mean(widths1))
 print('Median of widths')
 print(np.median(widths1))
+
+######################  Scatter plot of Intensity versus width  ####################################
 
 #fig=plt.figure(figsize=(12,8),dpi=256)
 plt.xlabel('Width (us)',fontsize=15)
