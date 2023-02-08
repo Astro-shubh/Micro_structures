@@ -39,7 +39,7 @@ for fil in os.listdir(dir):
 			break;
 	
 	
-widths1=np.array(widths1)*5.12
+widths1=np.array(widths1)*5.12            #########  5.12 is resolution of the time series. Please use the resolution of your observations here
 res = stats.pearsonr(widths1,intensity)
 print(res)
 
