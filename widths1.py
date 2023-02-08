@@ -1,10 +1,15 @@
+###########   This code is used to make a width histogram of individual micropulses stored in a directory  #################
+
 import os
 import numpy as np
 import matplotlib.pyplot as plt
 dir=str(input("enter directory name: "))
-bin_size=(input("enter size: "))
+bin_size=(input("enter histogram bin size: "))
 width=[]
 j=0
+
+######### Collecting information of individual micropulses    #########################
+
 for fil in os.listdir(dir):
 	I=[]
 	for line in open(dir+"/"+fil,"r"):
@@ -39,6 +44,8 @@ print('avg width :'+str(avg))
 #	bn=1+bn+int(bn*8.0/max(width))*0.5
 #	bins.append(bn)
 #print("avg width is: "+str(avg))
+
+#####################  Plotting the histogram  #############################
 
 #plt.title('histogram (bin_size):'+str(bin_size)+" "+str(dir)+' with '+str(j)+' pulses, avg pulse width: '+str(avg),fontsize=18)
 fig=plt.figure(figsize=(12,8),dpi=256)
