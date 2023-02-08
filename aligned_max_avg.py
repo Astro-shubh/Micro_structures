@@ -1,3 +1,5 @@
+#############   This code is used to prepare a average profile for intrinsic micropulses stored in a folder   ############### 
+
 import matplotlib.pyplot as plt
 import numpy as np
 import os
