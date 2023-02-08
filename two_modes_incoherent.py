@@ -1,6 +1,10 @@
+#############   Code to simulate incoherent superposition of two elliptically polarized waves   ###############33
+
 import matplotlib.pyplot as plt
 import numpy as np
 import math
+
+#############  Function to generate stokes parameters for given amplitude, position angle and fractional polarization #####
 def stokes(x,x0,sigma,f_l,f_v,psi,a):
 	I1=[]
 	Q1=[]
@@ -18,6 +22,8 @@ def stokes(x,x0,sigma,f_l,f_v,psi,a):
 	Q1=np.array(Q1)
 	L1=np.sqrt(Q1*Q1+U1*U1)
 	return(I1,Q1,U1,V1,L1)
+
+###### Function to generate position angle after incoherent superposition   ######  
 	
 def PPA(l1,l2,psi1,psi2):
 	psi=[]
@@ -28,6 +34,8 @@ def PPA(l1,l2,psi1,psi2):
 			psi.append(psi2)
 	print(psi)
 	return(psi)	
+
+########   Function to generate polarized micropulse train  ###################
 	
 def stokes_micro(x,sep,sigma,f_l,f_v,a):
 	I1=np.zeros(len(x))
@@ -64,6 +72,9 @@ f_v=-0.1
 a_micro=0.8
 #Im,Qm,Um,Vm,Lm,psim=stokes_micro(x,sep_micro,sigma_micro,f_l,f_v,a_micro)
 
+
+#########  Parameters of two superpositing components  ####################
+
 x01=380.
 sigma1=40.
 f_l=0.9
@@ -89,6 +100,9 @@ L=np.sqrt(Q*Q+U*U)
 psi=PPA(L1,L2,psi1,psi2)
 psi1=np.ones(len(x))*psi1
 psi2=np.ones(len(x))*psi2
+
+##############    Plotting the results  #################################
+
 fig=plt.figure(figsize=(5,5),dpi=100)
 ax1=fig.add_axes([0.15,0.13,0.82,0.3],xlabel='Time',ylabel='PPA (degrees)')
 ax1.set_ylim([-90,90])
